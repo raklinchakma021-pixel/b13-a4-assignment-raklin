@@ -1,4 +1,4 @@
- ##What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
+ ## What is the difference between getElementById, getElementsByClassName, and querySelector / querySelectorAll?
 
   ans no. 1:
   getElementById usually selects element by id, returns single element, only work with id and some say very fast.
@@ -9,7 +9,7 @@
 
   querySelectorALL also a CSS selector , it returns NodeList , returns all matching elements instead of first match.
 
- ##How do you create and insert a new element into the DOM?
+ ## How do you create and insert a new element into the DOM?
 
 ans no. 2:
 Create  an element:
@@ -30,7 +30,7 @@ Or,
 
 document.body.prepend(newDiv);
 
- ##What is Event Bubbling? And how does it work?
+ ## What is Event Bubbling? And how does it work?
 
 ans no. 3:
 
@@ -81,7 +81,7 @@ Because the event bubbles upward. That's how it's work.
 
 
 
- ##What is Event Delegation in JavaScript? Why is it useful?
+ ## What is Event Delegation in JavaScript? Why is it useful?
 
 ans no. 4:
 
@@ -105,7 +105,7 @@ Cleaner code.
 
 
 
- ##What is the difference between preventDefault() and stopPropagation() methods?
+ ## What is the difference between preventDefault() and stopPropagation() methods?
 
 ans no. 5:
 

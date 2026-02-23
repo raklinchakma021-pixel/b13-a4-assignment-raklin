@@ -59,6 +59,15 @@ function renderJobs(){
       </div>
         `
     })
+
+    const buttons = document.querySelectorAll(".tabBtn");
+
+buttons.forEach(btn => {
+  btn.addEventListener("click", () => {
+    buttons.forEach(b => b.classList.remove("bg-blue-500", "text-white"));
+    btn.classList.add("bg-blue-500", "text-white");
+  });
+});
  updateDashboard();
     
 }

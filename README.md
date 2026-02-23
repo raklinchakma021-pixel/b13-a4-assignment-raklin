@@ -40,11 +40,11 @@ Event Bubbling means when an event happens on a child element, it first runs on 
 
 Here is a html div . Inside a button which is child of the div . 
 
-<div id="parent">
+<!-- <div id="parent"> -->
 
-  <button id="child">Click Me</button>
+  <!-- <button id="child">Click Me</button> -->
 
-</div>
+<!-- </div> -->
 
 
 Let's apply js .

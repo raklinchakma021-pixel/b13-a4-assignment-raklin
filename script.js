@@ -22,7 +22,13 @@ function renderJobs(){
 
 
 
-    document.getElementById("sectionCount").innerText = filteredJobs.length + " Jobs";
+    // document.getElementById("sectionCount").innerText = filteredJobs.length + " Jobs";
+
+    const totalJobs = jobs.length;
+const jobsCount = filteredJobs.length;
+
+document.getElementById("sectionCount").innerText =
+  `${jobsCount} of ${totalJobs} Jobs`;
 
 
     if(filteredJobs.length === 0){

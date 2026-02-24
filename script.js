@@ -1,6 +1,5 @@
-let currentTab = "Not Applied";
 
-
+ let currentTab = "Not Applied";
 let jobs = [
     {id:1, company:"TechNova", position: "Frontend Developer", location: "Dhaka", type: "Full Time", salary: "$130,000 - $175,000", description: "Develop responsive web interfaces.", status: "Not Applied"},
      {id:2, company:"SkySoft", position:"Backend Developer", location:"Chattogram", type:"Full Time", salary:"$80,000 - $120,000", description:"Build secure APIs.", status:"Not Applied"},
@@ -11,29 +10,20 @@ let jobs = [
   {id:7, company:"AppCore", position:"Mobile Developer", location:"Chattogram", type:"Contract", salary:"$80,000 - $120,000", description:"Develop Android apps.", status:"Not Applied"},
   {id:8, company:"CyberTech", position:"DevOps Engineer", location:"Remote", type:"Full Time", salary:"$80,000 - $120,000", description:"Manage cloud systems.", status:"Not Applied"}
 ]
+function renderJobs (){
+  const jobsContainer = document.getElementById("jobsContainer")
+  jobsContainer.innerHTML = "";
 
-function renderJobs(){
-    const jobsContainer = document.getElementById("jobsContainer");
-    jobsContainer.innerHTML = "";
+  let filteredJobs = currentTab === "Not Applied" ? jobs : jobs.filter(job => job.status === currentTab);
 
-    let filteredJobs = currentTab === "Not Applied"
-    ? jobs 
-    : jobs.filter(job => job.status === currentTab);
+  const totalJobs = jobs.length;
+  const countingJobs = filteredJobs.length;
 
+  document.getElementById("sectionCount").innerText = `${countingJobs} of ${totalJobs} Jobs`;
 
-
-    // document.getElementById("sectionCount").innerText = filteredJobs.length + " Jobs";
-
-    const totalJobs = jobs.length;
-const jobsCount = filteredJobs.length;
-
-document.getElementById("sectionCount").innerText =
-  `${jobsCount} of ${totalJobs} Jobs`;
-
-
-    if(filteredJobs.length === 0){
-        jobsContainer.innerHTML = 
-        `
+  if(filteredJobs.length === 0){
+    jobsContainer.innerHTML = 
+     `
            <div class="col-span-full text-center p-10 bg-white rounded shadow">
         <div class="text-5xl mb-4"> <img src="./jobs.png" alt="" class="mx-auto mb-4 w-32 h-32 object-contain">
 </div>
@@ -42,11 +32,11 @@ document.getElementById("sectionCount").innerText =
       </div>
         `;
         return;
-    }
-
-    filteredJobs.forEach(job => {
-        jobsContainer.innerHTML += 
-        `
+  }
+  
+  filteredJobs.forEach(job => {
+    jobsContainer.innerHTML += 
+     `
         <div class="bg-white p-4 rounded shadow ">
         <div class="flex justify-between ">
         <h2 class="text-xl font-bold ">${job.position}</h2>
@@ -64,25 +54,21 @@ document.getElementById("sectionCount").innerText =
         </div>
       </div>
         `
-    })
-
-    const buttons = document.querySelectorAll(".tabBtn");
-
-buttons.forEach(btn => {
-  btn.addEventListener("click", () => {
-    buttons.forEach(b => b.classList.remove("bg-blue-500", "text-white"));
-    btn.classList.add("bg-blue-500", "text-white");
+        
   });
-});
- updateDashboard();
-    
+
+  const buttons = document.querySelectorAll(".tabBtn");
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(bt => bt.classList.remove("bg-blue-500", "text-white"));
+      btn.classList.add("bg-blue-500", "text-white");
+    });
+  });
+  updateDashboard();
 }
-
-
 
 function updateStatus(id, newStatus){
   jobs = jobs.map(job => job.id === id ? {...job, status:newStatus} : job);
-
   renderJobs();
 }
 
@@ -93,16 +79,16 @@ function deleteJob(id){
   renderJobs();
 }
 
-
 function changeTab(tab){
   currentTab = tab;
   renderJobs();
 }
-
 
 function updateDashboard(){
   document.getElementById("allCount").innerText = jobs.length;
   document.getElementById("interviewCount").innerText = jobs.filter(job => job.status === "Interview").length;
   document.getElementById("rejectedCount").innerText = jobs.filter(job => job.status === "Rejected").length;
 }
+
+
 renderJobs();
